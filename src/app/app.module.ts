@@ -32,6 +32,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { TechnicianListComponent } from './components/technician/technician-list/technician-list.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { TechnicianListComponent } from './components/technician/technician-list
     NavComponent,
     HomeComponent,
     HeaderComponent,
-    TechnicianListComponent
+    TechnicianListComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
