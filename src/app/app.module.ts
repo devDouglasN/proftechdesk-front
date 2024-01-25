@@ -33,6 +33,7 @@ import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { TechnicianListComponent } from './components/technician/technician-list/technician-list.component';
 import { LoginComponent } from './components/login/login.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -69,6 +70,11 @@ import { LoginComponent } from './components/login/login.component';
       MatIconModule,
       MatListModule,
       MatCardModule,
+      ToastrModule.forRoot({
+        timeOut: 3200,
+        closeButton: true,
+        progressBar: true
+      })
   ],
   providers: [],
   bootstrap: [AppComponent]
