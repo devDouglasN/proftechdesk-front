@@ -16,6 +16,14 @@ export class LoginComponent {
   }
 
   email = new FormControl(null, Validators.email);
-  password = new FormControl(null, Validators.minLength(3))
+  password = new FormControl(null, Validators.minLength(3));
+
+  validateFields(): boolean {
+    if (this.email.valid && this.password.valid) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
 }
