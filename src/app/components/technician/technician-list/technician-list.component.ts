@@ -18,7 +18,7 @@ export class TechnicianListComponent {
       email: 'douglas@.com',
       password: '1234',
       profiles: ['0'],
-      creationDate: '15/08/2023'
+      creationDate: '23/01/2024'
     }
   ]
 
