@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Credentials } from '../../models/credentials';
 import { FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,7 +13,10 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginComponent {
 
-  constructor(private toast: ToastrService) { }
+  constructor(
+    private toast: ToastrService,
+    private service: AuthService,
+    private router: Router) { }
 
   creds: Credentials = {
     email: '',
@@ -22,16 +27,16 @@ export class LoginComponent {
   password = new FormControl(null, Validators.minLength(3));
 
   login() {
-    this.toast.error('user or password invalid!', 'Login');
-    this.creds.password = '';
+    this.service.authenticate(this.creds).subscribe(response => {
+      this.service.sucessfulLogin(response.headers.get('Authorization').substring(7))
+      this.router.navigate([''])
+    }, () => {
+      this.toast.error('User or password invalid!');
+    })
   }
 
   validateFields(): boolean {
-    if (this.email.valid && this.password.valid) {
-      return true;
-    } else {
-      return false;
-    }
+    return this.email.valid && this.password.valid
   }
 
 }
