@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Technical } from '../../../models/technical';
+import { TechnicalService } from '../../../services/technical.service';
 
 
 @Component({
@@ -10,27 +11,34 @@ import { Technical } from '../../../models/technical';
   styleUrl: './technician-list.component.css'
 })
 export class TechnicianListComponent {
-  ELEMENT_DATA: Technical[] = [
-    {
-      id: 1,
-      name: 'Douglas',
-      cpf: '335.437.860-32',
-      email: 'douglas@.com',
-      password: '1234',
-      profiles: ['0'],
-      creationDate: '23/01/2024'
-    }
-  ]
+  ELEMENT_DATA: Technical[] = []
 
   displayedColumns: string[] = ['id', 'name', 'cpf', 'email', 'action'];
   dataSource = new MatTableDataSource<Technical>(this.ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  
+  constructor(
+    private service: TechnicalService
+  ) {}
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+  ngOnInit(): void {
+    this.findAll();
   }
-}
 
+  findAll() {
+    this.service.findAll().subscribe(response => {
+      this.ELEMENT_DATA = response;
+      this.dataSource = new MatTableDataSource<Technical>(response);
+      this.dataSource.paginator = this.paginator;
+    })
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();  
+  }
+  
+}
 
 
