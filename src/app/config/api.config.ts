@@ -1,3 +1,3 @@
-export const API_CONGIF = {
-    baseUrl: 'localhost:8080/login'
+export const API_CONFIG = {
+    baseUrl: 'localhost:8080/'
 }
