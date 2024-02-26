@@ -27,12 +27,15 @@ export class LoginComponent {
   password = new FormControl(null, Validators.minLength(3));
 
   login() {
-    this.service.authenticate(this.creds).subscribe(response => {
-      this.service.sucessfulLogin(response.headers.get('Authorization').substring(7))
-      this.router.navigate([''])
-    }, () => {
-      this.toast.error('User or password invalid!');
-    })
+    this.service.authenticate(this.creds).subscribe({
+      next: (response) => {
+        this.service.sucessfulLogin(response.headers.get('Authorization').substring(7));
+        this.router.navigate(['']);
+      },
+      error: () => {
+        this.toast.error('User or password invalid!');
+      }
+    });
   }
 
   validateFields(): boolean {
