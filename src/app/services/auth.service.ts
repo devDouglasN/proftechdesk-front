@@ -8,6 +8,12 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   providedIn: 'root'
 })
 export class AuthService {
+  isAuthenticate() {
+    throw new Error('Method not implemented.');
+  }
+  sucessfulLogin(arg0: string) {
+    throw new Error('Method not implemented.');
+  }
 
   jwtService: JwtHelperService = new JwtHelperService();
 
@@ -20,7 +26,7 @@ export class AuthService {
     })
   }
 
-  sucessfulLogin(authToken: string) {
+  successfulLogin(authToken: string) {
     localStorage.setItem('token', authToken)
   }
 
