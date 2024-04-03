@@ -11,7 +11,7 @@ import { TechnicalCreateComponent } from './components/technician/technical-crea
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
-    path: '', component: NavComponent, canActivate: [AuthGuard], children: [
+    path: '', component: NavComponent, children: [
       {path: 'home', component: HomeComponent},
       {path: 'technical', component: TechnicianListComponent},
       {path: 'technical/create', component: TechnicalCreateComponent}
