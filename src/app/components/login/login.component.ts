@@ -5,18 +5,18 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
 
   constructor(
     private toast: ToastrService,
     private service: AuthService,
-    private router: Router) { }
+    private router: Router
+  ) { }
 
   creds: Credentials = {
     email: '',
@@ -29,17 +29,17 @@ export class LoginComponent {
   login() {
     this.service.authenticate(this.creds).subscribe({
       next: (response) => {
-        this.service.sucessfulLogin(response.headers.get('Authorization').substring(7));
+        this.service.successfulLogin(response.headers.get('Authorization').substring(7));
         this.router.navigate(['']);
       },
       error: () => {
-        this.toast.error('User or password invalid!');
+        this.toast.error('Usuário e/ou senha inválidos');
       }
     });
   }
 
   validateFields(): boolean {
-    return this.email.valid && this.password.valid
+    return this.email.valid && this.password.valid;
   }
 
 }
