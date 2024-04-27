@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-// To work with forms in Angular 18
+// To work with forms in Angular 17
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 // To make HTTP requests
@@ -36,6 +36,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
 import { TechnicalCreateComponent } from './components/technician/technical-create/technical-create.component';
+import { TechnicalUpdateComponent } from './componentstechnician/technical-update/technical-update.component';
 
 
 @NgModule({
@@ -46,18 +47,22 @@ import { TechnicalCreateComponent } from './components/technician/technical-crea
     HeaderComponent,
     TechnicianListComponent,
     LoginComponent,
-    TechnicalCreateComponent
+    TechnicalCreateComponent,
+    TechnicalUpdateComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserAnimationsModule,
+
       // Forms
       FormsModule,
       ReactiveFormsModule,
+
       // Requests http
       HttpClientModule,
+      
       // Angular Material
       MatFormFieldModule,
       MatPaginatorModule,
