@@ -14,7 +14,8 @@ const routes: Routes = [
     path: '', component: NavComponent, children: [
       {path: 'home', component: HomeComponent},
       {path: 'technical', component: TechnicianListComponent},
-      {path: 'technical/create', component: TechnicalCreateComponent}
+      {path: 'technical/create', component: TechnicalCreateComponent},
+      {path: 'technical/update', component: TechnicalCreateComponent}
     ]
   }
 ];
