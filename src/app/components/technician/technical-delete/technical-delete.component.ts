@@ -42,7 +42,7 @@ export class TechnicalDeleteComponent {
 
   delete(): void {
     this.service.delete(this.technical.id).subscribe(() => {
-      this.toast.success('Técnico atualizado com sucesso', 'Atualizado');
+      this.toast.success('Cliente atualizado com sucesso', 'Atualizado');
       this.router.navigate(['technical']);
     }, ex => {
       console.log(ex)

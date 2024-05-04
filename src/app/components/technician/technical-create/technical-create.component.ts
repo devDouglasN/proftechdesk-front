@@ -35,7 +35,7 @@ export class TechnicalCreateComponent {
 
   create(): void {
     this.service.create(this.technical).subscribe(() => {
-      this.toast.success('Técnico cadastrado com sucesso', 'Cadastro');
+      this.toast.success('Cliente cadastrado com sucesso', 'Cadastro');
       this.router.navigate(['technical']);
     }, ex => {
       console.log(ex)
