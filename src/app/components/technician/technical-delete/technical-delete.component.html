@@ -1,1 +1,49 @@
-<p>technical-delete works!</p>
+<div class="container mat-elevation-z8">
+    <form class="form">
+        <h1 class="fullWidht">Deletar Técnico</h1>
+        <img class="fullWidht" src="assets/img/" alt="Proftechdesk">
+
+        <section class="section">
+            <mat-checkbox  [disabled]="true" class="margin" color="primary">Admin</mat-checkbox>
+            <mat-checkbox  [disabled]="true" class="margin" color="primary">Técnico</mat-checkbox>
+            <mat-checkbox  [disabled]="true" class="margin" color="primary">Cliente</mat-checkbox>
+        </section>
+
+        <mat-form-field class="fullWidht" appearance="fill">
+            <mat-label>Name</mat-label>
+            <input 
+            matInput 
+            >
+            <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="fullWidht" appearance="fill">
+            <mat-label>CPF</mat-label>
+            <input 
+            [disabled]="true"
+            matInput 
+            >            
+            <mat-icon matSuffix>pin</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="fullWidht" appearance="fill">
+            <mat-label>E-Mail</mat-label>
+            <input 
+            [disabled]="true"
+            matInput 
+            >
+        <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="fullWidht" appearance="fill">
+            <mat-label>Password</mat-label>
+            <input 
+            [disabled]="true"
+            matInput 
+            >
+            <mat-icon matSuffix>password</mat-icon>
+        </mat-form-field>
+        <button (click)="delete()" class="fullWidht" mat-flat-button color="primary">Deletar</button>
+        <button routerLink="../../" class="fullWidht" mat-stroked-button color="warn" routerLink="..">Cancel</button>
+    </form>
+</div>
