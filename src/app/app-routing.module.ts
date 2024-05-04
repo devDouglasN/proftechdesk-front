@@ -12,6 +12,7 @@ import { CustomerCreateComponent } from './components/customer/customer-create/c
 import { CustomerUpdateComponent } from './components/customer/customer-update/customer-update.component';
 import { CustomerDeleteComponent } from './components/customer/customer-delete/customer-delete.component';
 import { CustomerListComponent } from './components/customer/customer-list/customer-list.component';
+import { TicketListComponent } from './components/ticket/ticket-list/ticket-list.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -19,15 +20,17 @@ const routes: Routes = [
     path: '', component: NavComponent, children: [
       {path: 'home', component: HomeComponent},
 
-      {path: 'technical/list', component: TechnicianListComponent},
-      {path: 'technical/create', component: TechnicalCreateComponent},
-      {path: 'technical/update:id', component: TechnicalCreateComponent},
-      {path: 'technical/delete:id', component: TechnicalDeleteComponent},
+      {path: 'technical/list',        component: TechnicianListComponent},
+      {path: 'technical/create',      component: TechnicalCreateComponent},
+      {path: 'technical/update:id',   component: TechnicalCreateComponent},
+      {path: 'technical/delete:id',   component: TechnicalDeleteComponent},
 
-      {path: 'customer/list', component: CustomerListComponent},
-      {path: 'customer/create', component: CustomerCreateComponent},
-      {path: 'customer/update:id', component: CustomerUpdateComponent},
-      {path: 'customer/delete:id', component: CustomerDeleteComponent}
+      {path: 'customer/list',         component: CustomerListComponent},
+      {path: 'customer/create',       component: CustomerCreateComponent},
+      {path: 'customer/update:id',    component: CustomerUpdateComponent},
+      {path: 'customer/delete:id',    component: CustomerDeleteComponent},
+
+      { path: 'tickets',              component: TicketListComponent }
     ]
   }
 ];
