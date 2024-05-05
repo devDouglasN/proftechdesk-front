@@ -7,6 +7,12 @@
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
     </mat-form-field>
 
+    <mat-radio-group color="primary">
+      <mat-radio-button (click)="orderByStatus(0)">ABERTO</mat-radio-button>
+      <mat-radio-button (click)="orderByStatus(1)">ANDAMENTO</mat-radio-button>
+      <mat-radio-button (click)="orderByStatus(2)">ENCERRADO</mat-radio-button>
+    </mat-radio-group>
+
       <div class="mat-elevation-z8">
           <table mat-table [dataSource]="dataSource">
         
