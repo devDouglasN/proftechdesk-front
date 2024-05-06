@@ -26,6 +26,11 @@ img {
     width: 49%;
 }
 
+.observations {
+    min-height: 6rem;
+    max-height: 10rem;
+}
+
 .textarea{
     min-height: 6rem;
     max-height: 10rem;
