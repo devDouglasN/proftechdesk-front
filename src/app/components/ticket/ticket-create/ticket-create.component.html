@@ -5,7 +5,8 @@
     <form class="form">
         <mat-form-field class="full-width" appearance="outline">
             <mat-label>Titulo do chamado</mat-label>
-            <input [(ngModel)]="ticket.title" name="title" matInput [formControl]="title" required placeholder="Ex. Limpar memória ram e formatar Windows.">
+            <input [(ngModel)]="ticket.title" name="title" matInput [formControl]="title" 
+            required placeholder="Ex. Limpar memória ram e formatar Windows.">
         </mat-form-field>
     </form>
 
@@ -31,7 +32,7 @@
 
     <div class="technical">
         <mat-form-field class="full-width" appearance="outline">
-            <mat-label>Selecione uma Técnico</mat-label>
+            <mat-label>Selecione um Técnico</mat-label>
             <mat-select [(ngModel)]="ticket.technical" name="technician" [formControl]="technicianName" required>
                 <mat-option *ngFor="let tech of technical" value="{{tech.id}}">{{tech.name}}</mat-option>
             </mat-select>
@@ -54,7 +55,7 @@
     </mat-form-field>
     </form>
 
-    <button (click)="create()" [disabled]="" class="full-width mat-elevation-z4" mat-raised-button color="primary">Adicionar</button>
+    <button (click)="create()" [disabled]="fieldValidate()" class="full-width mat-elevation-z4" mat-raised-button color="primary">Adicionar</button>
     <button class="full-width mat-elevation-z4" mat-stroked-button color="warn" routerLink="..">Cancelar</button>
 
     <P class="full-width" >Development by Douglas Nascimento</P>
