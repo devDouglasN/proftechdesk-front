@@ -41,12 +41,13 @@
 
     <div class="customer">
         <mat-form-field class="full-width" appearance="outline">
-            <mat-label>Selecione uma Cliente</mat-label>
-            <mat-select [(ngModel)]="ticket.customer" name="customer" [formControl]="customer" required>
-                <mat-option *ngFor="let cust of customer" value="{{cust.id}}">{{cust.name}}</mat-option>
-            </mat-select>
+          <mat-label>Selecione uma Cliente</mat-label>
+          <mat-select formControlName="customer" required>
+            <mat-option *ngFor="let cust of customer" [value]="cust.id">{{cust.name}}</mat-option>
+          </mat-select>
         </mat-form-field>
-    </div>
+      </div>
+      
 
     <form class="form">
     <mat-form-field class="full-width" appearance="outline">
