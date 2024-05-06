@@ -11,7 +11,7 @@
 
     <div class="status-priority">
         <mat-form-field appearance="outline">
-            <mat-label>PRIORIDADE ({{statusReturn(ticket.status)}})</mat-label>
+            <mat-label>STATUS ({{statusReturn(ticket.status)}})</mat-label>
             <mat-select [(ngModel)]="ticket.status" name="status" [formControl]="status" required>
                 <mat-option value="0">ABERTO</mat-option>
                 <mat-option value="1">EM ANDAMENTO</mat-option>
@@ -20,7 +20,7 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-            <mat-label>STATUS ({{ statusPriority(ticket.priority)}})</mat-label>
+            <mat-label>PRIORIDADE({{ statusPriority(ticket.priority)}})</mat-label>
             <mat-select [(ngModel)]="ticket.priority" name="priority" [formControl]="priority" required>
                 <mat-option value="0">BAIXA</mat-option>
                 <mat-option value="1">MEDIA</mat-option>
