@@ -11,6 +11,7 @@
       <mat-radio-button (click)="orderByStatus(0)">ABERTO</mat-radio-button>
       <mat-radio-button (click)="orderByStatus(1)">ANDAMENTO</mat-radio-button>
       <mat-radio-button (click)="orderByStatus(2)">ENCERRADO</mat-radio-button>
+      <mat-radio-button (click)="orderByStatus('')">TODOS</mat-radio-button>
     </mat-radio-group>
 
       <div class="mat-elevation-z8">
@@ -51,7 +52,7 @@
               <ng-container matColumnDef="Status">
                 <th mat-header-cell *matHeaderCellDef> 
                     Status </th>
-                <td mat-cell *matCellDef="let element"> {{element.Status}} </td>
+                <td mat-cell *matCellDef="let element"> {{statusReturn(element.status)}} </td>
               </ng-container>
   
             <ng-container matColumnDef="action">
