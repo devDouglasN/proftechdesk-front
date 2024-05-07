@@ -34,7 +34,8 @@ const routes: Routes = [
 
       { path: 'tickets',              component: TicketListComponent },
       { path: 'ticket/create',        component: TicketCreateComponent },
-      { path: 'ticket/update/:id',    component: TicketUpdateComponent }
+      { path: 'ticket/update/:id',    component: TicketUpdateComponent },
+      { path: 'ticket/read/:id',      component: TicketUpdateComponent }
       
     ]
   }
