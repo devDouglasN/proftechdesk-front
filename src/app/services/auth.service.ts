@@ -8,12 +8,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   providedIn: 'root'
 })
 export class AuthService {
-  isAuthenticate() {
-    throw new Error('Method not implemented.');
-  }
-  sucessfulLogin(arg0: string) {
-    throw new Error('Method not implemented.');
-  }
+  
 
   jwtService: JwtHelperService = new JwtHelperService();
 
@@ -32,7 +27,7 @@ export class AuthService {
 
   isAuthenticated() {
     let token = localStorage.getItem('token')
-    if(token !== null) {
+    if(token != null) {
       return !this.jwtService.isTokenExpired(token)
     }
     return false
