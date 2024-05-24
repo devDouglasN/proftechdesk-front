@@ -15,14 +15,12 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   authenticate(creds: Credentials) {
-    return this.http.post(`${API_CONFIG.baseUrl}/login`, creds, {
-      observe: 'response',
-      responseType: 'text'
-    })
+    return this.http.post(`${API_CONFIG.baseUrl}/auth/login`, creds);
   }
 
-  successfulLogin(authToken: string) {
+  successfulLogin(authToken: string, email: string) {
     localStorage.setItem('token', authToken)
+    localStorage.setItem('email', email)
   }
 
   isAuthenticated() {

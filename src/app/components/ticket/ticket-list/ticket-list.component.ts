@@ -1,27 +1,33 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Ticket } from '../../../models/ticket';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { TicketService } from '../../../services/ticket.service';
 
 @Component({
   selector: 'app-ticket-list',
   templateUrl: './ticket-list.component.html',
   styleUrl: './ticket-list.component.css'
 })
-export class TicketListComponent {
-  service: any;
+export class TicketListComponent implements OnInit {
+ 
+  ngOnInit(): void {
+    this.findAll();
+  }
 
-applyFilter($event: KeyboardEvent) {
-throw new Error('Method not implemented.');
-}
-  
   ELEMENT_DATA: Ticket[] = []
   FILTERED_DATA: Ticket[] = []
 
-  displayedColumns: string[] = ['id', 'title', 'customerName', 'technicianName', 'openingDate', 'priority', 'status', 'action'];
+  displayedColumns: string[] = ['id', 'title', 'technical', 'customer', 'openingDate', 'priority', 'status', 'action'];
   dataSource = new MatTableDataSource<Ticket>(this.ELEMENT_DATA);
 
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
+
+
+  constructor(
+    private service: TicketService
+  ) { }
 
 
   findAll(): void {
@@ -32,23 +38,28 @@ throw new Error('Method not implemented.');
     })
   }
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
   statusReturn(status: any): string {
     if (status == '0') {
-      return 'ABERTO';
+      return 'OPENED';
     } else if (status == '1') {
-      return 'EM ANDAMENTO';
+      return 'PROGRESS';
     } else {
-      return 'ENCERRADO';
+      return 'CLOSED';
     }
   }
 
   statusPriority(priority: any): string {
     if (priority == '0') {
-      return 'BAIXA';
+      return 'LOW';
     } else if (priority == '1') {
-      return 'MEDIA';
+      return 'MEDIUM';
     } else {
-      return 'ALTA';
+      return 'HIGH';
     }
   }
 
@@ -69,4 +80,5 @@ throw new Error('Method not implemented.');
   }
 
 
+    
 }
