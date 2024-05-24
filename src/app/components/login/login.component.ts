@@ -12,32 +12,38 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
+  creds: Credentials = {
+    email: '',
+    password: ''
+  }
+
   constructor(
     private toast: ToastrService,
     private service: AuthService,
     private router: Router
   ) { }
 
-  creds: Credentials = {
-    email: '',
-    password: ''
-  }
-
   email = new FormControl(null, Validators.email);
   password = new FormControl(null, Validators.minLength(3));
 
   login() {
-    this.service.authenticate(this.creds).subscribe({
-      next: (response) => {
-        this.service.successfulLogin(response.headers.get('Authorization').substring(7));
-        this.router.navigate(['']);
-      },
-      error: () => {
-        this.toast.error('Usuário e/ou senha inválidos');
+    this.service.authenticate(this.creds).pipe().subscribe(res => {
+      let token = JSON.parse(JSON.stringify(res)).token
+      this.service.successfulLogin(token, this.creds.email)
+      this.router.navigate(['']);
+      this.toast.success("Login realizado com sucesso!", "Login", { timeOut: 7000})
+    }, ((err) => {
+      console.log(err.status);
+      if (err.status === 403) {
+        this.toast.error('Acesso expirado ou login incorreto');
+        //this.service.logout();
+        this.router.navigate(['login']);
+      }else{
+        this.toast.error("Usuário e/ou senha inválidos")
       }
-    });
+     })
+    );
   }
-
   validateFields(): boolean {
     return this.email.valid && this.password.valid;
   }
