@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './technical-update.component.html',
   styleUrl: './technical-update.component.css'
 })
-export class TechnicalUpdateComponent implements OnInit{
+export class TechnicalUpdateComponent implements OnInit {
 
   technical: Technical = {
     id: '',
@@ -49,7 +49,7 @@ export class TechnicalUpdateComponent implements OnInit{
   update(): void {
     this.service.update(this.technical).subscribe(() => {
       this.toast.success('Cliente atualizado com sucesso', 'Atualizado');
-      this.router.navigate(['technical']);
+      this.router.navigate(['technicals']);
     }, ex => {
       console.log(ex)
       if(ex.error.status === 500){
