@@ -1,16 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { Technical } from '../../../models/technical';
+
 import { TechnicalService } from '../../../services/technical.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Technical } from '../../../models/technical';
 
 @Component({
   selector: 'app-technical-create',
   templateUrl: './technical-create.component.html',
   styleUrl: './technical-create.component.css'
 })
-export class TechnicalCreateComponent {
+export class TechnicalCreateComponent implements OnInit {
 
   technical: Technical = {
     id: '',
@@ -33,9 +34,14 @@ export class TechnicalCreateComponent {
     private router: Router
   ) {}
 
+
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
+
   create(): void {
     this.service.create(this.technical).subscribe(() => {
-      this.toast.success('Cliente cadastrado com sucesso', 'Cadastro');
+      this.toast.success('Técnico cadastrado com sucesso', 'Cadastro');
       this.router.navigate(['technical']);
     }, ex => {
       console.log(ex)
