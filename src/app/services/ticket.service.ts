@@ -12,18 +12,18 @@ export class TicketService {
   constructor(private http: HttpClient) { }
 
   findAll(): Observable<Ticket[]> {
-    return this.http.get<Ticket[]>(`${API_CONFIG.baseUrl}/ticket`)
+    return this.http.get<Ticket[]>(`${API_CONFIG.baseUrl}/tickets`)
   }
 
   findById(id: any): Observable<Ticket> {
-    return this.http.get<Ticket>(`${API_CONFIG.baseUrl}/ticket/${id}`);
+    return this.http.get<Ticket>(`${API_CONFIG.baseUrl}/tickets/${id}`);
   }
 
   create(ticket: Ticket): Observable<Ticket>{
-    return this.http.post<Ticket>(`${API_CONFIG.baseUrl}/ticket`, ticket)
+    return this.http.post<Ticket>(`${API_CONFIG.baseUrl}/tickets`, ticket)
   }
 
   update(ticket: Ticket): Observable<Ticket>{
-    return this.http.put<Ticket>(`${API_CONFIG.baseUrl}/ticket/${ticket.id}`, ticket)
+    return this.http.put<Ticket>(`${API_CONFIG.baseUrl}/tickets/${ticket.id}`, ticket)
   }
 }

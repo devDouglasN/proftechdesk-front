@@ -10,14 +10,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TechnicalService {
 
-  findById(id: any): Observable<Technical> {
-    return this.http.get<Technical>(`${API_CONFIG.baseUrl}/technicals/${id}`);
-  }
-
   constructor(private http: HttpClient) { }
 
-  findAll(): Observable<Technical[]> {
+  findAll(): Observable<Technical[]> {                        
     return this.http.get<Technical[]>(`${API_CONFIG.baseUrl}/technicals`);
+  }
+
+  findById(id: any): Observable<Technical> {
+    return this.http.get<Technical>(`${API_CONFIG.baseUrl}/technicals/${id}`);
   }
 
   create(technical: Technical): Observable<Technical> {
@@ -25,10 +25,10 @@ export class TechnicalService {
   }
 
   update(technical: Technical): Observable<Technical> {
-    return this.http.put<Technical>(`${API_CONFIG.baseUrl}/tecnicos/${technical.id}`, technical);
+    return this.http.put<Technical>(`${API_CONFIG.baseUrl}/technicals/${technical.id}`, technical);
   }
 
   delete(technical: Technical): Observable<Technical>{
-    return this.http.delete<Technical>(`${API_CONFIG.baseUrl}/technical/${technical.id}`);
+    return this.http.delete<Technical>(`${API_CONFIG.baseUrl}/technicals/${technical.id}`);
   }
 }
