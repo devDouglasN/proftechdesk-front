@@ -19,18 +19,18 @@ import { TicketUpdateComponent } from './components/ticket/ticket-update/ticket-
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
-    path: '', component: NavComponent, children: [
+    path: '', component: NavComponent, canActivate: [AuthGuard], children: [
       {path: 'home', component: HomeComponent},
 
       {path: 'technical',              component: TechnicianListComponent},
-      {path: 'technicals/create',      component: TechnicalCreateComponent},
-      {path: 'technicals/update:id',   component: TechnicalCreateComponent},
-      {path: 'technicals/delete:id',   component: TechnicalDeleteComponent},
+      {path: 'technical/create',       component: TechnicalCreateComponent},
+      {path: 'technical/update/:id',   component: TechnicalCreateComponent},
+      {path: 'technical/delete/:id',   component: TechnicalDeleteComponent},
 
       {path: 'customer',               component: CustomerListComponent},
-      {path: 'customers/create',       component: CustomerCreateComponent},
-      {path: 'customers/update:id',    component: CustomerUpdateComponent},
-      {path: 'customers/delete:id',    component: CustomerDeleteComponent},    
+      {path: 'customer/create',        component: CustomerCreateComponent},
+      {path: 'customer/update/:id',    component: CustomerUpdateComponent},
+      {path: 'customer/delete/:id',    component: CustomerDeleteComponent},    
 
       { path: 'tickets',               component: TicketListComponent },
       { path: 'tickets/create',        component: TicketCreateComponent },
