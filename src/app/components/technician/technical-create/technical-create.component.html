@@ -6,7 +6,7 @@
         <section class="section">
             <mat-checkbox (click)="addProfile(0)" class="margin" color="primary">Admin</mat-checkbox>
             <mat-checkbox (click)="addProfile(1)" [checked]="true" class="margin" color="primary">Técnico</mat-checkbox>
-            <mat-checkbox (click)="addProfile(2)" class="margin" color="primary">Técnico</mat-checkbox>
+            <mat-checkbox (click)="addProfile(2)" class="margin" color="primary">Cliente</mat-checkbox>
         </section>
 
         <mat-form-field class="fullWidht" appearance="fill">
@@ -17,7 +17,7 @@
             [formControl]="name"
             required
             matInput 
-            placeholder="Ex.. fulano de tal"
+            placeholder="Ex: Douglas do Nascimento"
             maxlength="50">
             <mat-icon matSuffix>person</mat-icon>
         </mat-form-field>
@@ -43,20 +43,20 @@
             [formControl]="email"
             required
             matInput 
-            placeholder="Ex.. fulano@mail.com">
+            placeholder="Ex: douglas@mail.com">
             <mat-icon matSuffix>email</mat-icon>
         </mat-form-field>
 
         <mat-form-field class="fullWidht" appearance="fill">
             <mat-label>Password</mat-label>
             <input
-           [(ngModel)]="technical.password"
-           name="password"
-           [formControl]="password"
-           required
-           type="password" 
-           matInput 
-           placeholder="Ex.. 1234">
+            [(ngModel)]="technical.password"
+            name="password"
+            [formControl]="password"
+            required
+            type="password" 
+            matInput 
+            placeholder="Ex.. 1234">
            <mat-icon matSuffix>password</mat-icon>
         </mat-form-field>
 

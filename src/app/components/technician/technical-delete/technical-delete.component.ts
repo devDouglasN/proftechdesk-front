@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Technical } from '../../../models/technical';
 import { TechnicalService } from '../../../services/technical.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -9,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './technical-delete.component.html',
   styleUrl: './technical-delete.component.css'
 })
-export class TechnicalDeleteComponent {
+export class TechnicalDeleteComponent implements OnInit {
 
   technical: Technical = {
     id: '',
@@ -19,13 +19,13 @@ export class TechnicalDeleteComponent {
     password: '',
     profiles: [],
     creationDate: ''
-  }
+  };
 
   constructor(
     private service:  TechnicalService,
     private toast:    ToastrService,
     private router:   Router,
-    private route:   ActivatedRoute,
+    private route:    ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
@@ -41,17 +41,20 @@ export class TechnicalDeleteComponent {
   }
 
   delete(): void {
-    this.service.delete(this.technical.id).subscribe(() => {
-      this.toast.success('Cliente atualizado com sucesso', 'Atualizado');
-      this.router.navigate(['technical']);
+    this.service.delete(this.technical.id).subscribe((response: any) => {
+      this.toast.success(response.message, 'Delete');
+      this.router.navigate(['technicals']);
     }, ex => {
-      console.log(ex)
-      if(ex.error.status === 500){
-        this.toast.error('Número do Cadastro de Pessoa Física (CPF) brasileiro inválido')
-      } else {
+      console.log(ex);
+      if (ex.error.message) {
         this.toast.error(ex.error.message);
+      } else if (ex.error.errors) {
+        ex.error.errors.forEach(element => {
+          this.toast.error(element.message);
+        });
+      } else {
+        this.toast.error('Erro desconhecido ao tentar deletar o técnico.');
       }
-    })
+    });
   }
-
 }

@@ -6,12 +6,14 @@
         <section class="section">
             <mat-checkbox (click)="addProfile(0)" class="margin" color="primary">Admin</mat-checkbox>
             <mat-checkbox (click)="addProfile(1)" [checked]="true" class="margin" color="primary">Cliente</mat-checkbox>
-            <mat-checkbox (click)="addProfile(2)" class="margin" color="primary">Cliente</mat-checkbox>
+            <mat-checkbox (click)="addProfile(2)" class="margin" color="primary">Técnico</mat-checkbox>
         </section>
 
         <mat-form-field class="fullWidht" appearance="fill">
             <mat-label>Name</mat-label>
-            <input 
+            <input
+            [(ngModel)]="customer.name"
+            name="name"
             [formControl]="name"
             required
             matInput 
@@ -22,17 +24,22 @@
 
         <mat-form-field class="fullWidht" appearance="fill">
             <mat-label>CPF</mat-label>
-            <input 
+            <input
+            [(ngModel)]="customer.cpf"
+            name="cpf"
             [formControl]="cpf"
             required
             matInput 
             placeholder="Ex..000.000.000-00"
-            mask="000.000.000-00">            <mat-icon matSuffix>pin</mat-icon>
+            mask="000.000.000-00">
+            <mat-icon matSuffix>pin</mat-icon>
         </mat-form-field>
 
         <mat-form-field class="fullWidht" appearance="fill">
             <mat-label>E-Mail</mat-label>
-            <input 
+            <input
+            [(ngModel)]="customer.email"
+            name="email"
             [formControl]="email"
             required
             matInput 
@@ -42,7 +49,9 @@
 
         <mat-form-field class="fullWidht" appearance="fill">
             <mat-label>Password</mat-label>
-            <input 
+            <input
+            [(ngModel)]="customer.password"
+           name="password"
            [formControl]="password"
            required
            type="password" 

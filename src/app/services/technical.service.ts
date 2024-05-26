@@ -28,7 +28,7 @@ export class TechnicalService {
     return this.http.put<Technical>(`${API_CONFIG.baseUrl}/technicals/${technical.id}`, technical);
   }
 
-  delete(technical: Technical): Observable<Technical>{
-    return this.http.delete<Technical>(`${API_CONFIG.baseUrl}/technicals/${technical.id}`);
+  delete(id: any): Observable<Technical>{
+    return this.http.delete<Technical>(`${API_CONFIG.baseUrl}/technicals/${id}`);
   }
 }
