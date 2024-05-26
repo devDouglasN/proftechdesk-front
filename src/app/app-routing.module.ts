@@ -17,8 +17,10 @@ import { TicketCreateComponent } from './components/ticket/ticket-create/ticket-
 import { TicketUpdateComponent } from './components/ticket/ticket-update/ticket-update.component';
 import { TechnicalUpdateComponent } from './components/technician/technical-update/technical-update.component';
 import { TicketReadComponent } from './components/ticket/ticket-read/ticket-read.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
+  {path: 'login/register', component: RegisterComponent},
   { path: 'login', component: LoginComponent },
   {
     path: '', component: NavComponent, canActivate: [AuthGuard], children: [
