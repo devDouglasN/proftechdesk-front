@@ -15,6 +15,8 @@ import { CustomerListComponent } from './components/customer/customer-list/custo
 import { TicketListComponent } from './components/ticket/ticket-list/ticket-list.component';
 import { TicketCreateComponent } from './components/ticket/ticket-create/ticket-create.component';
 import { TicketUpdateComponent } from './components/ticket/ticket-update/ticket-update.component';
+import { TechnicalUpdateComponent } from './components/technician/technical-update/technical-update.component';
+import { TicketReadComponent } from './components/ticket/ticket-read/ticket-read.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -22,20 +24,20 @@ const routes: Routes = [
     path: '', component: NavComponent, canActivate: [AuthGuard], children: [
       {path: 'home', component: HomeComponent},
 
-      {path: 'technical',              component: TechnicianListComponent},
-      {path: 'technical/create',       component: TechnicalCreateComponent},
-      {path: 'technical/update/:id',   component: TechnicalCreateComponent},
-      {path: 'technical/delete/:id',   component: TechnicalDeleteComponent},
+      {path: 'technicals',              component: TechnicianListComponent},
+      {path: 'technicals/create',       component: TechnicalCreateComponent},
+      {path: 'technicals/update/:id',   component: TechnicalUpdateComponent},
+      {path: 'technicals/delete/:id',   component: TechnicalDeleteComponent},
 
-      {path: 'customer',               component: CustomerListComponent},
-      {path: 'customer/create',        component: CustomerCreateComponent},
-      {path: 'customer/update/:id',    component: CustomerUpdateComponent},
-      {path: 'customer/delete/:id',    component: CustomerDeleteComponent},    
+      {path: 'customers',               component: CustomerListComponent},
+      {path: 'customers/create',        component: CustomerCreateComponent},
+      {path: 'customers/update/:id',    component: CustomerUpdateComponent},
+      {path: 'customers/delete/:id',    component: CustomerDeleteComponent},    
 
       { path: 'tickets',               component: TicketListComponent },
       { path: 'tickets/create',        component: TicketCreateComponent },
       { path: 'tickets/update/:id',    component: TicketUpdateComponent },
-      { path: 'tickets/read/:id',      component: TicketUpdateComponent }
+      { path: 'tickets/read/:id',      component: TicketReadComponent }
       
     ]
   }
