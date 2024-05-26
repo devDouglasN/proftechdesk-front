@@ -46,6 +46,7 @@ import { TicketListComponent } from './components/ticket/ticket-list/ticket-list
 import { TicketCreateComponent } from './components/ticket/ticket-create/ticket-create.component';
 import { TicketUpdateComponent } from './components/ticket/ticket-update/ticket-update.component';
 import { TicketReadComponent } from './components/ticket/ticket-read/ticket-read.component';
+import { RegisterComponent } from './components/register/register.component';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { TicketReadComponent } from './components/ticket/ticket-read/ticket-read
     TicketListComponent,
     TicketCreateComponent,
     TicketUpdateComponent,
-    TicketReadComponent
+    TicketReadComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
