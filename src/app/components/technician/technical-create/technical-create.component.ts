@@ -13,6 +13,10 @@ import { Technical } from '../../../models/technical';
 })
 export class TechnicalCreateComponent implements OnInit {
 
+  ngOnInit(): void {
+   
+  }
+
   technical: Technical = {
     id: '',
     name: '',
@@ -34,19 +38,16 @@ export class TechnicalCreateComponent implements OnInit {
     private router: Router
   ) {}
 
-
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
-
   create(): void {
     this.service.create(this.technical).subscribe(() => {
-      this.toast.success('Técnico cadastrado com sucesso', 'Cadastro');
-      this.router.navigate(['technical']);
+      this.toast.success('Técnico cadastrado com sucesso!', 'Cadastro')
+      this.router.navigate(['technicals'])
     }, ex => {
-      console.log(ex)
-      if(ex.error.status === 500){
-        this.toast.error('Número do Cadastro de Pessoa Física (CPF) brasileiro inválido')
+      console.log(ex);
+      if (ex.error.errors) {
+        ex.error.errors.forEach(element => {
+          this.toast.error(element.message);
+        });
       } else {
         this.toast.error(ex.error.message);
       }
@@ -65,4 +66,5 @@ export class TechnicalCreateComponent implements OnInit {
     return this.name.valid && this.cpf.valid
      && this.email.valid && this.password.valid;
   }
+
 }
