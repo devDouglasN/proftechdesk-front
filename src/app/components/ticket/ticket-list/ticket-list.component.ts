@@ -45,21 +45,21 @@ export class TicketListComponent implements OnInit {
 
   statusReturn(status: any): string {
     if (status == '0') {
-      return 'OPENED';
+      return 'ABERTO';
     } else if (status == '1') {
-      return 'PROGRESS';
+      return 'EM ANDAMENTO';
     } else {
-      return 'CLOSED';
+      return 'ENCERRADO';
     }
   }
 
   statusPriority(priority: any): string {
     if (priority == '0') {
-      return 'LOW';
+      return 'BAIXA';
     } else if (priority == '1') {
-      return 'MEDIUM';
+      return 'MÉDIA';
     } else {
-      return 'HIGH';
+      return 'ALTA';
     }
   }
 
@@ -77,8 +77,5 @@ export class TicketListComponent implements OnInit {
       this.dataSource = new MatTableDataSource<Ticket>(this.ELEMENT_DATA);
       this.dataSource.paginator = this.paginator;
     }
-  }
-
-
-    
+  } 
 }
