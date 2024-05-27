@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Credentials } from '../../models/credentials';
 import { FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
@@ -10,7 +10,10 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+
+  ngOnInit(): void {
+  }
 
   creds: Credentials = {
     email: '',
@@ -22,6 +25,7 @@ export class LoginComponent {
     private service: AuthService,
     private router: Router
   ) { }
+  
 
   email = new FormControl(null, Validators.email);
   password = new FormControl(null, Validators.minLength(3));
@@ -44,6 +48,7 @@ export class LoginComponent {
      })
     );
   }
+  
   validateFields(): boolean {
     return this.email.valid && this.password.valid;
   }
